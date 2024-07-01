@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 生成代码风格: targetRuntime: MyBatis3、MyBatis3Simple、MyBatis3DynamicSql -->
+    <context id="MyContext" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- 使用``包裹mysql关键字 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 注意事项: plugin放置的顺序，需要在<property>后面 -->
+        <!-- 官方插件: 生成Mapper.xml时覆盖原文件 -->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+        <!-- 自定义注解和序列化插件 -->
+        <plugin type="my.tools.mybatis.generator.plugins.LombokPlugin"/>
+        <!-- 自定义分页插件 -->
+        <plugin type="my.tools.mybatis.generator.plugins.LimitPlugin"/>
+        <!-- 官方插件 -->
+        <!--<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>-->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
+        <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
+
+        <!-- 自定义生成model的代码注释 -->
+        <commentGenerator type="my.tools.mybatis.generator.plugins.CommentGenerator">
+            <!-- 是否去除自动生成的注释 true:是 false:否, 自动生成注释太啰嗦, 可以编码扩展CommentGenerator -->
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="false"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.2.241:3306/back3d_account"
+                        userId="root"
+                        password="Alx94dA0">
+            <!-- 设置为true就只读取设置的数据库下的表, 否则会优先读取到mysql的user表 -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- 指定生成model的路径 -->
+        <javaModelGenerator targetPackage="com.example.model" targetProject="mybatis-generator-tools/src/main/java"/>
+        <!-- 指定生成mapper.xml的路径 -->
+        <sqlMapGenerator targetPackage="com.example.mapper" targetProject="mybatis-generator-tools/src/main/resources"/>
+        <!-- 指定生成mapper接口的的路径 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.mapper" targetProject="mybatis-generator-tools/src/main/java"/>
+
+        <!-- 需要生成的数据库表 -->
+        <table tableName="tb_bx_bk_acc_tenant">
+            <!-- 自增主键列: sqlStatement="JDBC"时, xml中insert不插入ID, 使用useGeneratedKeys在插入数据后获取数据库自动生成的主键值, 适用于那些支持标准JDBC的数据库 -->
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <!-- 自增主键列: sqlStatement="MYSQL"时, xml中insert不插入ID, 使用selectKey在插入数据后获取数据库自动生成的主键值, 适用于那些不支持标准JDBC的数据库 -->
+            <!--<generatedKey column="id" sqlStatement="MYSQL" identity="true"/>-->
+
+            <!-- 数据库类型TINYINT(默认映射为Byte), 需要映射为JAVA类型Integer -->
+            <!--<columnOverride column="IS_DELETED" javaType="Integer" jdbcType="TINYINT"/>-->
+        </table>
+    </context>
+</generatorConfiguration>
