@@ -13,28 +13,23 @@ public class LombokPlugin extends PluginAdapter {
         return true;
     }
 
+    /**
+     * 基础字段模型类
+     */
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        // 添加domain的import
-        topLevelClass.addImportedType("lombok.Data");
-        topLevelClass.addImportedType("lombok.NoArgsConstructor");
-        topLevelClass.addImportedType("lombok.AllArgsConstructor");
-        topLevelClass.addImportedType("lombok.EqualsAndHashCode");
+        generatorDefaultLombok(topLevelClass); // 注解
+        generatorDefaultSerialVersionUID(topLevelClass); // 序列化
+        return true;
+    }
 
-        // 添加domain的注解
-        topLevelClass.addAnnotation("@Data");
-        topLevelClass.addAnnotation("@NoArgsConstructor");
-        topLevelClass.addAnnotation("@AllArgsConstructor");
-        topLevelClass.addAnnotation("@EqualsAndHashCode(callSuper = false)");
-
-        // 添加domain的注释
-        //topLevelClass.addJavaDocLine("/**");
-        //topLevelClass.addJavaDocLine("* Created by Mybatis Generator on " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-        //topLevelClass.addJavaDocLine("*/");
-
-        // 序列化
+    /**
+     * 大字段模型类
+     */
+    @Override
+    public boolean modelRecordWithBLOBsClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        generatorDefaultLombok(topLevelClass);
         generatorDefaultSerialVersionUID(topLevelClass);
-
         return true;
     }
 
@@ -55,8 +50,30 @@ public class LombokPlugin extends PluginAdapter {
     }
 
     /**
+     * 注解
+     * @param topLevelClass 要操作的类
+     */
+    private void generatorDefaultLombok(TopLevelClass topLevelClass) {
+        // 添加domain的import
+        topLevelClass.addImportedType("lombok.Data");
+        topLevelClass.addImportedType("lombok.NoArgsConstructor");
+        topLevelClass.addImportedType("lombok.AllArgsConstructor");
+        topLevelClass.addImportedType("lombok.EqualsAndHashCode");
+
+        // 添加domain的注解
+        topLevelClass.addAnnotation("@Data");
+        topLevelClass.addAnnotation("@NoArgsConstructor");
+        topLevelClass.addAnnotation("@AllArgsConstructor");
+        topLevelClass.addAnnotation("@EqualsAndHashCode(callSuper = false)");
+
+        // 添加domain的注释
+        //topLevelClass.addJavaDocLine("/**");
+        //topLevelClass.addJavaDocLine("* Created by Mybatis Generator on " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        //topLevelClass.addJavaDocLine("*/");
+    }
+
+    /**
      * 序列化
-     *
      * @param topLevelClass 要操作的类
      */
     private void generatorDefaultSerialVersionUID(TopLevelClass topLevelClass) {

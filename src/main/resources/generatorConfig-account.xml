@@ -43,7 +43,7 @@
         <!-- 指定生成model的路径 -->
         <javaModelGenerator targetPackage="com.baixin.back3d.account.biz.db.po" targetProject="back3d-account/back3d-account-biz/src/main/java"/>
         <!-- 指定生成mapper.xml的路径 -->
-        <sqlMapGenerator targetPackage="com.baixin.back3d.account.biz.db.mapper" targetProject="back3d-account/back3d-account-biz/src/main/resources"/>
+        <sqlMapGenerator targetPackage="sqlmap" targetProject="back3d-account/back3d-account-biz/src/main/resources"/>
         <!-- 指定生成mapper接口的的路径 -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.baixin.back3d.account.biz.db.mapper" targetProject="back3d-account/back3d-account-biz/src/main/java"/>
 
