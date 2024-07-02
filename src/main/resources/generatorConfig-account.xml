@@ -41,14 +41,14 @@
         </jdbcConnection>
 
         <!-- 指定生成model的路径 -->
-        <javaModelGenerator targetPackage="com.example.model" targetProject="mybatis-generator-tools/src/main/java"/>
+        <javaModelGenerator targetPackage="com.baixin.back3d.account.biz.db.po" targetProject="back3d-account/back3d-account-biz/src/main/java"/>
         <!-- 指定生成mapper.xml的路径 -->
-        <sqlMapGenerator targetPackage="com.example.mapper" targetProject="mybatis-generator-tools/src/main/resources"/>
+        <sqlMapGenerator targetPackage="com.baixin.back3d.account.biz.db.mapper" targetProject="back3d-account/back3d-account-biz/src/main/resources"/>
         <!-- 指定生成mapper接口的的路径 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.mapper" targetProject="mybatis-generator-tools/src/main/java"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.baixin.back3d.account.biz.db.mapper" targetProject="back3d-account/back3d-account-biz/src/main/java"/>
 
         <!-- 需要生成的数据库表 -->
-        <table tableName="tb_bx_bk_acc_tenant">
+        <table tableName="tb_bx_bk_acc_feishu_user">
             <!-- 自增主键列: sqlStatement="JDBC"时, xml中insert不插入ID, 使用useGeneratedKeys在插入数据后获取数据库自动生成的主键值, 适用于那些支持标准JDBC的数据库 -->
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
             <!-- 自增主键列: sqlStatement="MYSQL"时, xml中insert不插入ID, 使用selectKey在插入数据后获取数据库自动生成的主键值, 适用于那些不支持标准JDBC的数据库 -->
