@@ -38,7 +38,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.2.241:3306/back3d_web"
+                        connectionURL="jdbc:mysql://139.224.195.216:3306/back3d_web"
                         userId="root"
                         password="${db.password}">
             <!-- 设置为true就只读取设置的数据库下的表, 否则会优先读取到mysql的user表 -->
@@ -61,6 +61,12 @@
 
             <!-- 数据库类型TINYINT(默认映射为Byte), 需要映射为JAVA类型Integer -->
             <!--<columnOverride column="IS_DELETED" javaType="Integer" jdbcType="TINYINT"/>-->
+        </table>
+        <table tableName="tb_bx_bk_project_file">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+        <table tableName="tb_bx_bk_project_permission">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>
