@@ -44,7 +44,8 @@ public class CommentGenerator extends DefaultCommentGenerator {
         }
 
         compilationUnit.addFileCommentLine("/**");
-        compilationUnit.addFileCommentLine("* Created by Mybatis Generator on " + dateFormat.format(new Date()));
+        //compilationUnit.addFileCommentLine("* Created by Mybatis Generator on " + dateFormat.format(new Date()));
+        compilationUnit.addFileCommentLine("* Created by Mybatis Generator");
         compilationUnit.addFileCommentLine("*/");
         compilationUnit.addFileCommentLine("");
     }

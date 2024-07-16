@@ -27,44 +27,46 @@ public class LimitPlugin extends PluginAdapter {
      */
     @Override
     public boolean modelExampleClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        PrimitiveTypeWrapper integerWrapper = FullyQualifiedJavaType.getIntInstance().getPrimitiveTypeWrapper();
+        //PrimitiveTypeWrapper intWrapper = FullyQualifiedJavaType.getIntInstance().getPrimitiveTypeWrapper();
+        //PrimitiveTypeWrapper longWrapper = PrimitiveTypeWrapper.getLongInstance().getPrimitiveTypeWrapper();
+        FullyQualifiedJavaType longType = new FullyQualifiedJavaType("long");
 
-        Field limit = new Field("limit", integerWrapper);
+        Field limit = new Field("limit", longType);
         limit.setName("limit");
         limit.setVisibility(JavaVisibility.PRIVATE);
-        limit.setType(integerWrapper);
+        limit.setType(longType);
         topLevelClass.addField(limit);
 
         Method setLimit = new Method("setLimit");
         setLimit.setVisibility(JavaVisibility.PUBLIC);
         setLimit.setName("setLimit");
-        setLimit.addParameter(new Parameter(integerWrapper, "limit"));
+        setLimit.addParameter(new Parameter(longType, "limit"));
         setLimit.addBodyLine("this.limit = limit;");
         topLevelClass.addMethod(setLimit);
 
         Method getLimit = new Method("getLimit");
         getLimit.setVisibility(JavaVisibility.PUBLIC);
-        getLimit.setReturnType(integerWrapper);
+        getLimit.setReturnType(longType);
         getLimit.setName("getLimit");
         getLimit.addBodyLine("return limit;");
         topLevelClass.addMethod(getLimit);
 
-        Field offset = new Field("offset", integerWrapper);
+        Field offset = new Field("offset", longType);
         offset.setName("offset");
         offset.setVisibility(JavaVisibility.PRIVATE);
-        offset.setType(integerWrapper);
+        offset.setType(longType);
         topLevelClass.addField(offset);
 
         Method setOffset = new Method("setOffset");
         setOffset.setVisibility(JavaVisibility.PUBLIC);
         setOffset.setName("setOffset");
-        setOffset.addParameter(new Parameter(integerWrapper, "offset"));
+        setOffset.addParameter(new Parameter(longType, "offset"));
         setOffset.addBodyLine("this.offset = offset;");
         topLevelClass.addMethod(setOffset);
 
         Method getOffset = new Method("getOffset");
         getOffset.setVisibility(JavaVisibility.PUBLIC);
-        getOffset.setReturnType(integerWrapper);
+        getOffset.setReturnType(longType);
         getOffset.setName("getOffset");
         getOffset.addBodyLine("return offset;");
         topLevelClass.addMethod(getOffset);
