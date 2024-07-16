@@ -29,7 +29,7 @@ public class LimitPlugin extends PluginAdapter {
     public boolean modelExampleClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         //PrimitiveTypeWrapper intWrapper = FullyQualifiedJavaType.getIntInstance().getPrimitiveTypeWrapper();
         //PrimitiveTypeWrapper longWrapper = PrimitiveTypeWrapper.getLongInstance().getPrimitiveTypeWrapper();
-        FullyQualifiedJavaType longType = new FullyQualifiedJavaType("long");
+        FullyQualifiedJavaType longType = new FullyQualifiedJavaType("java.lang.Long"); //必须用Long 默认值为null，不能用long 默认值为0
 
         Field limit = new Field("limit", longType);
         limit.setName("limit");
@@ -78,8 +78,7 @@ public class LimitPlugin extends PluginAdapter {
      * 为Mapper.xml的selectByExample添加limit
      */
     @Override
-    public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(XmlElement element,
-                                                                     IntrospectedTable introspectedTable) {
+    public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
         XmlElement ifLimitNotNullElement = new XmlElement("if");
         ifLimitNotNullElement.addAttribute(new Attribute("test", "limit != null"));
 
