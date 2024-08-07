@@ -29,7 +29,8 @@ public class Generator {
         List<String> warnings = new ArrayList<>();
         boolean overwrite = true;
         ConfigurationParser cp = new ConfigurationParser(warnings);
-        Configuration config = cp.parseConfiguration(Generator.class.getResourceAsStream("/generatorConfig-web.xml"));
+        Configuration config = cp.parseConfiguration(Generator.class.getResourceAsStream("/generatorConfig-account.xml"));
+        //Configuration config = cp.parseConfiguration(Generator.class.getResourceAsStream("/generatorConfig-web.xml"));
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
         MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
         myBatisGenerator.generate(null);
