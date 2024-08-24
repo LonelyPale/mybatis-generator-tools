@@ -54,7 +54,8 @@
         <!-- 指定生成mapper.xml的路径 -->
         <sqlMapGenerator targetPackage="sqlmap" targetProject="back3d-web/src/main/resources"/>
         <!-- 指定生成mapper接口的的路径 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.baixin.back3d.web.db.mapper" targetProject="back3d-web/src/main/java"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.baixin.back3d.web.db.mapper"
+                             targetProject="back3d-web/src/main/java"/>
 
         <!-- 需要生成的数据库表 -->
         <table tableName="tb_bx_bk_web_project">
@@ -82,6 +83,9 @@
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
         <table tableName="tb_bx_bk_web_share">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+        <table tableName="tb_bx_bk_web_model_component">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
     </context>
