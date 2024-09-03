@@ -88,5 +88,8 @@
         <table tableName="tb_bx_bk_web_model_component">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
+        <table tableName="tb_bx_bk_web_project_permission_apply">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
