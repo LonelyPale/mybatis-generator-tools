@@ -64,5 +64,8 @@
             <!-- 数据库类型TINYINT(默认映射为Byte), 需要映射为JAVA类型Integer -->
             <!--<columnOverride column="IS_DELETED" javaType="Integer" jdbcType="TINYINT"/>-->
         </table>
+        <table tableName="tb_bx_bk_res_render_task">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
